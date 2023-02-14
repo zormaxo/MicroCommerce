@@ -3,9 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{798224F4-C96D-41BA-9B7E-A74236129433}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{87017CEC-F1C0-4F82-9C2D-45C6F30340C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{A42943D3-8073-4D4C-8EA2-012323CF192E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "src\BuildingBlocks\EventBus\EventBus.csproj", "{17B9E57C-494D-4821-8C97-B0BFDFE0CE5F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17B9E57C-494D-4821-8C97-B0BFDFE0CE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B9E57C-494D-4821-8C97-B0BFDFE0CE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B9E57C-494D-4821-8C97-B0BFDFE0CE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B9E57C-494D-4821-8C97-B0BFDFE0CE5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87017CEC-F1C0-4F82-9C2D-45C6F30340C2} = {798224F4-C96D-41BA-9B7E-A74236129433}
+		{A42943D3-8073-4D4C-8EA2-012323CF192E} = {87017CEC-F1C0-4F82-9C2D-45C6F30340C2}
+		{17B9E57C-494D-4821-8C97-B0BFDFE0CE5F} = {A42943D3-8073-4D4C-8EA2-012323CF192E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7164F5FC-1C19-4A7A-B7BD-AE7D43FC4B51}
