@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "src\BuildingBlo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "src\BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{6A1595E0-671D-4F28-93B8-0373DF92A884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusFactory", "src\BuildingBlocks\EventBus\EventBusFactory\EventBusFactory.csproj", "{BFF0CCF2-B2BD-4C35-AFD6-F1F74FA852DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusFactory", "src\BuildingBlocks\EventBus\EventBusFactory\EventBusFactory.csproj", "{BFF0CCF2-B2BD-4C35-AFD6-F1F74FA852DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C0D1D2A1-1761-47B9-BD19-B0222D758BD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "src\Services\Catalog.API\Catalog.API.csproj", "{20AADB9B-C22D-4E67-ADD8-F3746B4D0468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{BFF0CCF2-B2BD-4C35-AFD6-F1F74FA852DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFF0CCF2-B2BD-4C35-AFD6-F1F74FA852DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFF0CCF2-B2BD-4C35-AFD6-F1F74FA852DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AADB9B-C22D-4E67-ADD8-F3746B4D0468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AADB9B-C22D-4E67-ADD8-F3746B4D0468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AADB9B-C22D-4E67-ADD8-F3746B4D0468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AADB9B-C22D-4E67-ADD8-F3746B4D0468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,8 @@ Global
 		{68E4F4E0-4A9D-4123-BE7F-8C390054FDE8} = {A42943D3-8073-4D4C-8EA2-012323CF192E}
 		{6A1595E0-671D-4F28-93B8-0373DF92A884} = {A42943D3-8073-4D4C-8EA2-012323CF192E}
 		{BFF0CCF2-B2BD-4C35-AFD6-F1F74FA852DB} = {A42943D3-8073-4D4C-8EA2-012323CF192E}
+		{C0D1D2A1-1761-47B9-BD19-B0222D758BD3} = {798224F4-C96D-41BA-9B7E-A74236129433}
+		{20AADB9B-C22D-4E67-ADD8-F3746B4D0468} = {C0D1D2A1-1761-47B9-BD19-B0222D758BD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7164F5FC-1C19-4A7A-B7BD-AE7D43FC4B51}

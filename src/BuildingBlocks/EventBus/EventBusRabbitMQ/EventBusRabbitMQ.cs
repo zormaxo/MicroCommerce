@@ -1,6 +1,5 @@
 ﻿using EventBus;
 using EventBus.Event;
-using EventBus.RabbitMQ;
 using Newtonsoft.Json;
 using Polly;
 using RabbitMQ.Client;
