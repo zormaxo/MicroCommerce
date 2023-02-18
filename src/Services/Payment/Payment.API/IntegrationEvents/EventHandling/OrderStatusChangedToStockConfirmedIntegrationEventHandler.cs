@@ -3,7 +3,7 @@ using EventBus.Event;
 using Microsoft.Extensions.Options;
 using Payment.IntegrationEvents.Events;
 
-namespace Payment.IntegrationEvents.EventHandling;
+namespace Payment.API.IntegrationEvents.EventHandling;
 
 public class OrderStatusChangedToStockConfirmedIntegrationEventHandler : IIntegrationEventHandler<OrderStatusChangedToStockConfirmedIntegrationEvent>
 {
@@ -48,9 +48,10 @@ public class OrderStatusChangedToStockConfirmedIntegrationEventHandler : IIntegr
         }
 
         _logger.LogInformation(
-            "----- Publishing integration event: {IntegrationEventId} - ({@IntegrationEvent})",
+            "----- Publishing integration event: {IntegrationEventId} - ({@IntegrationEvent}) - OrderId:{@event.OrderId}",
             orderPaymentIntegrationEvent.Id,
-            orderPaymentIntegrationEvent);
+            orderPaymentIntegrationEvent,
+            @event.OrderId);
 
         _eventBus.Publish(orderPaymentIntegrationEvent);
 
