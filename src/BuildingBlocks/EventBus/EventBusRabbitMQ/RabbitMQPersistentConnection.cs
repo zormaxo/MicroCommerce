@@ -1,21 +1,16 @@
 ﻿using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EventBusRabbitMQ
 {
     public class RabbitMQPersistentConnection : IDisposable
     {
+        private readonly object lock_object = new();
         private readonly IConnectionFactory connectionFactory;
         private readonly int retryCount;
         private IConnection connection;
-        private object lock_object = new object();
         private bool _disposed;
 
 

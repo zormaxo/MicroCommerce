@@ -11,7 +11,7 @@ public abstract class BaseEventBus : IEventBus, IDisposable
 
     public EventBusConfig EventBusConfig { get; private set; }
 
-    public BaseEventBus(EventBusConfig config, IServiceProvider serviceProvider)
+    protected BaseEventBus(EventBusConfig config, IServiceProvider serviceProvider)
     {
         EventBusConfig = config;
         ServiceProvider = serviceProvider;

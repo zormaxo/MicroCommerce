@@ -7,15 +7,15 @@ public class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManage
 {
     private readonly Dictionary<string, List<SubscriptionInfo>> _handlers;
     private readonly List<Type> _eventTypes;
+    private readonly Func<string, string> _eventNameGetter;
 
     public event EventHandler<string> OnEventRemoved;
-    public Func<string, string> EventNameGetter;
 
     public InMemoryEventBusSubscriptionsManager(Func<string, string> eventNameGetter)
     {
         _handlers = new Dictionary<string, List<SubscriptionInfo>>();
         _eventTypes = new List<Type>();
-        EventNameGetter = eventNameGetter;
+        _eventNameGetter = eventNameGetter;
     }
 
     public bool IsEmpty => _handlers is { Count: 0 };
@@ -120,6 +120,6 @@ public class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManage
     public string GetEventKey<T>()
     {
         string eventName = typeof(T).Name;
-        return EventNameGetter(eventName);
+        return _eventNameGetter(eventName);
     }
 }
