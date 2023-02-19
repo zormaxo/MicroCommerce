@@ -1,5 +1,5 @@
-﻿using Identity.API.Services;
-using IdentityServer.Application.Models;
+﻿using Identity.API.Models;
+using Identity.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.API.Controllers;

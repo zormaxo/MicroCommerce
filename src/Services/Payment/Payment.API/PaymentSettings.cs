@@ -1,4 +1,4 @@
-﻿namespace Payment;
+﻿namespace Payment.API;
 
 public class PaymentSettings
 {

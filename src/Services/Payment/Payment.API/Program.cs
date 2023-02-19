@@ -1,8 +1,8 @@
 using EventBus;
 using EventBus.Abstraction;
-using Payment;
+using Payment.API;
 using Payment.API.IntegrationEvents.EventHandling;
-using Payment.IntegrationEvents.Events;
+using Payment.API.IntegrationEvents.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 

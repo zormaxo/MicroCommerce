@@ -1,6 +1,6 @@
 ﻿using EventBus.Event;
 
-namespace Payment.IntegrationEvents.Events;
+namespace Payment.API.IntegrationEvents.Events;
 
 public class OrderStatusChangedToStockConfirmedIntegrationEvent : IntegrationEvent
 {

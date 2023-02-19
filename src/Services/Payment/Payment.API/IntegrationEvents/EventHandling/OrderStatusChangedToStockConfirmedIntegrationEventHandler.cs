@@ -1,7 +1,7 @@
 ﻿using EventBus.Abstraction;
 using EventBus.Event;
 using Microsoft.Extensions.Options;
-using Payment.IntegrationEvents.Events;
+using Payment.API.IntegrationEvents.Events;
 
 namespace Payment.API.IntegrationEvents.EventHandling;
 

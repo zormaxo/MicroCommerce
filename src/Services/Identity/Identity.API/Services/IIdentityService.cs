@@ -1,4 +1,4 @@
-﻿using IdentityServer.Application.Models;
+﻿using Identity.API.Models;
 
 namespace Identity.API.Services;
 

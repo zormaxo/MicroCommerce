@@ -35,6 +35,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{5A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "src\Services\Identity\Identity.API\Identity.API.csproj", "{9A938AC1-EF47-4290-9DF7-29CDAF843D46}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose-files", "docker-compose-files", "{6EC23AA8-8937-421F-8F19-C4CDF88A20EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consul", "consul", "{BE762732-C4F7-42C7-9A17-62BCE548A2C1}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\consul\docker-compose.yml = docker-compose-files\consul\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rabbitmq", "rabbitmq", "{90C669C2-574B-41A7-BDF0-EC90C6DE47FE}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\rabbitmq\docker-compose.yml = docker-compose-files\rabbitmq\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "redis", "redis", "{92659BA8-E40D-49C6-AF07-1CC057409D0C}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\redis\docker-compose.yml = docker-compose-files\redis\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlserver", "sqlserver", "{886DA4BF-EF52-4DA1-A263-81D7DF3C1DD4}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\sqlserver\docker-compose.yml = docker-compose-files\sqlserver\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53C4BABE-A0CE-43E2-BEFA-B54B4276C280}"
+	ProjectSection(SolutionItems) = preProject
+		ServiceUrls.txt = ServiceUrls.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{DDACA56D-0E74-443C-9BA2-34B127C9FF6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.ApiGateway", "src\ApiGateways\Web.ApiGateway\Web.ApiGateway.csproj", "{56AF0FCF-10A6-466A-8FD1-CB9A2E5B3948}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +104,10 @@ Global
 		{9A938AC1-EF47-4290-9DF7-29CDAF843D46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A938AC1-EF47-4290-9DF7-29CDAF843D46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A938AC1-EF47-4290-9DF7-29CDAF843D46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AF0FCF-10A6-466A-8FD1-CB9A2E5B3948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AF0FCF-10A6-466A-8FD1-CB9A2E5B3948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AF0FCF-10A6-466A-8FD1-CB9A2E5B3948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AF0FCF-10A6-466A-8FD1-CB9A2E5B3948}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +128,12 @@ Global
 		{0F7F4074-FD67-4510-9FBF-0FCA80D86C7A} = {96D97459-9240-4E98-9999-F62D50509019}
 		{5A8C1420-4550-4D6E-8025-BDF5D66DF839} = {C0D1D2A1-1761-47B9-BD19-B0222D758BD3}
 		{9A938AC1-EF47-4290-9DF7-29CDAF843D46} = {5A8C1420-4550-4D6E-8025-BDF5D66DF839}
+		{BE762732-C4F7-42C7-9A17-62BCE548A2C1} = {6EC23AA8-8937-421F-8F19-C4CDF88A20EB}
+		{90C669C2-574B-41A7-BDF0-EC90C6DE47FE} = {6EC23AA8-8937-421F-8F19-C4CDF88A20EB}
+		{92659BA8-E40D-49C6-AF07-1CC057409D0C} = {6EC23AA8-8937-421F-8F19-C4CDF88A20EB}
+		{886DA4BF-EF52-4DA1-A263-81D7DF3C1DD4} = {6EC23AA8-8937-421F-8F19-C4CDF88A20EB}
+		{DDACA56D-0E74-443C-9BA2-34B127C9FF6C} = {798224F4-C96D-41BA-9B7E-A74236129433}
+		{56AF0FCF-10A6-466A-8FD1-CB9A2E5B3948} = {DDACA56D-0E74-443C-9BA2-34B127C9FF6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7164F5FC-1C19-4A7A-B7BD-AE7D43FC4B51}

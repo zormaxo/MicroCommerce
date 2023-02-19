@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServer.Application.Models;
+namespace Identity.API.Models;
 
 public class LoginResponseModel
 {
