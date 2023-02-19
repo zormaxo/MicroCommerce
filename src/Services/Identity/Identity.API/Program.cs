@@ -1,14 +1,18 @@
+using Identity.API.Extensions;
 using Identity.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.ConfigureConsul(builder.Configuration);
 
 var app = builder.Build();
 
@@ -25,4 +29,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Start();
+
+app.RegisterWithConsul(app.Lifetime, builder.Configuration);
+
+app.WaitForShutdown();

@@ -1,6 +1,7 @@
 using Catalog.API;
 using Catalog.API.Extensions;
 using Catalog.API.Infrastructure;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
 
@@ -11,7 +12,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddCustomDbContext(builder.Configuration);
 builder.Services.AddCustomOptions(builder.Configuration);
-
+builder.Services.ConfigureConsul(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -19,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+IServerAddressesFeature addressFeature = null;
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,7 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
@@ -50,4 +52,8 @@ app.UseStaticFiles(
         RequestPath = "/Pic"
     });
 
-app.Run();
+app.Start();
+
+app.RegisterWithConsul(app.Lifetime, builder.Configuration);
+
+app.WaitForShutdown();
