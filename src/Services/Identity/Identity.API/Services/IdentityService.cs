@@ -15,7 +15,7 @@ public class IdentityService : IIdentityService
         var claims = new Claim[]
         {
             new Claim(ClaimTypes.NameIdentifier, requestModel.UserName),
-            new Claim(ClaimTypes.Name, "Salih Cantekin"),
+            new Claim(ClaimTypes.Name, "Omer"),
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperLongSecretKey"));

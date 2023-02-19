@@ -1,15 +1,20 @@
+using Basket.API.Extensions;
+using Basket.API.Infrastructure.Repositories;
+using Basket.API.IntegrationEvents.EventHandling;
+using Basket.API.IntegrationEvents.Events;
+using Basket.API.Model;
+using Basket.API.Services;
 using EventBus;
 using EventBus.Abstraction;
-using Payment.API;
-using Payment.API.IntegrationEvents.EventHandling;
-using Payment.API.IntegrationEvents.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.Configure<PaymentSettings>(builder.Configuration);
 // Add services to the container.
 
-builder.Services.AddTransient<OrderStatusChangedToStockConfirmedIntegrationEventHandler>();
+builder.Services.AddControllers();
+builder.Services.ConfigureConsul(builder.Configuration);
+builder.Services.ConfigureAuth(builder.Configuration);
+builder.Services.AddSingleton(sp => sp.ConfigureRedis(builder.Configuration));
 builder.Services
     .AddSingleton<IEventBus>(
         serviceProvider =>
@@ -18,16 +23,22 @@ builder.Services
             {
                 ConnectionRetryCount = 5,
                 EventNameSuffix = "IntegrationEvent",
-                SubscriberClientAppName = "PaymentService",
+                SubscriberClientAppName = "BasketService",
                 EventBusType = EventBusType.RabbitMQ,
             };
 
             return EventBusFactory.EventBusFactory.Create(eventBusConfig, serviceProvider);
         });
 
-builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IBasketRepository, RedisBasketRepository>();
+builder.Services.AddTransient<IIdentityService, IdentityService>();
+builder.Services.AddTransient<OrderCreatedIntegrationEventHandler>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -43,15 +54,20 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Start();
+
+app.RegisterWithConsul(app.Lifetime, builder.Configuration);
+
+app.WaitForShutdown();
 
 static void ConfigureEventBus(IApplicationBuilder app)
 {
     var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
-    eventBus.Subscribe<OrderStatusChangedToStockConfirmedIntegrationEvent, OrderStatusChangedToStockConfirmedIntegrationEventHandler>(
-        );
+
+    eventBus.Subscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
 }
