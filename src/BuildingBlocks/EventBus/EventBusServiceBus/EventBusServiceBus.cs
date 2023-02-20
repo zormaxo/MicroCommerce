@@ -33,7 +33,7 @@ public class EventBusServiceBus : BaseEventBus
         }
 
         // Ensure the topic is created
-        if (_managementClient.TopicExistsAsync(_topicClient.TopicName).GetAwaiter().GetResult())
+        if (!_managementClient.TopicExistsAsync(_topicClient.TopicName).GetAwaiter().GetResult())
             _managementClient.CreateTopicAsync(EventBusConfig.DefaultTopicName).GetAwaiter().GetResult();
 
         return _topicClient;
