@@ -1,11 +1,10 @@
 ﻿using EventBus.Event;
 
-namespace Application.FunctionalTests.Events.Events
-{
-    public class OrderCreatedIntegrationEvent : IntegrationEvent
-    {
-        public int Id { get; set; }
+namespace Application.FunctionalTests.Events.Events;
 
-        public OrderCreatedIntegrationEvent(int id) { Id = id; }
-    }
+public class OrderCreatedIntegrationEvent : IntegrationEvent
+{
+    public int Id { get; set; }
+
+    public OrderCreatedIntegrationEvent(int id) { Id = id; }
 }
