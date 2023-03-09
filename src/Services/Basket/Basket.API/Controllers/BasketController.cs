@@ -45,26 +45,26 @@ public class BasketController : ControllerBase
     public async Task<ActionResult<CustomerBasket>> UpdateBasketAsync([FromBody] CustomerBasket value)
     { return Ok(await _repository.UpdateBasketAsync(value)); }
 
-    [Route("additem")]
-    [ProducesResponseType((int)HttpStatusCode.OK)]
-    [HttpPost]
-    public async Task<ActionResult> AddItemToBasket([FromBody] BasketItem basketItem)
-    {
-        var userId = _identityService.GetUserName();
+    //[Route("additem")]
+    //[ProducesResponseType((int)HttpStatusCode.OK)]
+    //[HttpPost]
+    //public async Task<ActionResult> AddItemToBasket([FromBody] BasketItem basketItem)
+    //{
+    //    var userId = _identityService.GetUserName();
 
-        var basket = await _repository.GetBasketAsync(userId);
+    //    var basket = await _repository.GetBasketAsync(userId);
 
-        if (basket == null)
-        {
-            basket = new CustomerBasket(userId);
-        }
+    //    if (basket == null)
+    //    {
+    //        basket = new CustomerBasket(userId);
+    //    }
 
-        basket.Items.Add(basketItem);
+    //    basket.Items.Add(basketItem);
 
-        await _repository.UpdateBasketAsync(basket);
+    //    await _repository.UpdateBasketAsync(basket);
 
-        return Ok();
-    }
+    //    return Ok();
+    //}
 
     [Route("checkout")]
     [HttpPost]

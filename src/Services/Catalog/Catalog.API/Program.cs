@@ -48,7 +48,7 @@ app.MigrateDbContext<CatalogContext>(
 app.UseStaticFiles(
     new StaticFileOptions
     {
-        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Pic")),
+        FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Pic")),
         RequestPath = "/Pic"
     });
 
