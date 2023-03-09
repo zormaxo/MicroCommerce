@@ -18,7 +18,7 @@ public class IdentityService : IIdentityService
             new Claim(ClaimTypes.Name, "Omer"),
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperLongSecretKey"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperMaxLongSecretKey"));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var expiry = DateTime.Now.AddDays(10);
 

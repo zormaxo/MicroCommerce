@@ -15,7 +15,10 @@ public static class HttpClientExtension
     }
 
     public async static Task PostAsync<TValue>(this HttpClient Client, String Url, TValue Value)
-    { await Client.PostAsJsonAsync(Url, Value); }
+    {
+        var omer = await Client.PostAsJsonAsync(Url, Value);
+        var sss = 5;
+    }
 
 
     public async static Task<T> GetResponseAsync<T>(this HttpClient Client, String Url)
