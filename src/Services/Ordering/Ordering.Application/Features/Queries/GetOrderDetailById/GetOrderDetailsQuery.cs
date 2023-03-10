@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderService.Application.Features.Queries.GetOrderDetailById;
+namespace Ordering.Application.Features.Queries.GetOrderDetailById;
 
 public class GetOrderDetailsQuery : IRequest<OrderDetailViewModel>
 {

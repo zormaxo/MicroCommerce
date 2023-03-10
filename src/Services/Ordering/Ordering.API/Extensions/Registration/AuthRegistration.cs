@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace Web.ApiGateway.Extensions;
+namespace Ordering.API.Extensions.Registration;
 
 public static class AuthRegistration
 {
@@ -11,21 +11,24 @@ public static class AuthRegistration
         var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["AuthConfig:Secret"]));
 
         services.AddAuthentication(
-            opt =>
+            x =>
             {
-                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(
-                options =>
+                x =>
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
                     {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = signingKey,
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = signingKey
+                        ClockSkew = TimeSpan.Zero,
+                        RequireExpirationTime = true
                     };
                 });
 

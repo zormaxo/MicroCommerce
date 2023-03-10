@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OrderService.Application.Features.Queries.GetOrderDetailById;
+namespace Ordering.Application.Features.Queries.GetOrderDetailById;
 
 public class GetOrderDetailsQueryHandler : IRequestHandler<GetOrderDetailsQuery, OrderDetailViewModel>
 {
