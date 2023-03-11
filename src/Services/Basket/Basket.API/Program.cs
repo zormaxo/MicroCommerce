@@ -6,8 +6,23 @@ using Basket.API.Model;
 using Basket.API.Services;
 using EventBus;
 using EventBus.Abstraction;
+using Serilog;
+
+var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile($"appsettings.json", optional: false)
+    .AddJsonFile($"appsettings.{env}.json", optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+var serilogConfiguration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile($"serilog.json", optional: false)
+    .Build();
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfiguration(configuration);
 
 // Add services to the container.
 
@@ -41,7 +56,15 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
+//builder.Logging.ClearProviders();
+//builder.Logging.AddSerilog(Log.Logger);
+
 var app = builder.Build();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom
+    .Configuration(serilogConfiguration)
+    .CreateLogger();
 
 ConfigureEventBus(app);
 
@@ -58,6 +81,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+Log.Information("Basket is Running....");
 
 app.Start();
 

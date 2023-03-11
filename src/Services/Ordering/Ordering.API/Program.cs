@@ -8,6 +8,7 @@ using Ordering.API.IntegrationEvents.Events;
 using Ordering.Application;
 using Ordering.Infrastructure;
 using Ordering.Infrastructure.Context;
+using Serilog;
 
 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 var configuration = new ConfigurationBuilder()
@@ -46,15 +47,15 @@ builder.Services.AddDbContext<OrderDbContext>();
 builder.Services.AddScoped<OrderDbContextSeed>();
 
 builder.Logging.ClearProviders();
-//builder.Logging.AddSerilog(Log.Logger);
+builder.Logging.AddSerilog(Log.Logger);
 
 ConfigureService(builder.Services);
 var app = builder.Build();
 
-//Log.Logger = new LoggerConfiguration()
-//    .ReadFrom
-//    .Configuration(serilogConfiguration)
-//    .CreateLogger();
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom
+    .Configuration(serilogConfiguration)
+    .CreateLogger();
 
 app.MigrateDbContext<OrderDbContext>(
     (context, services) =>
@@ -65,7 +66,7 @@ app.MigrateDbContext<OrderDbContext>(
         dbContextSeeder.SeedAsync(context, logger).Wait();
     });
 
-//Log.Information("Application is Running....");
+Log.Information("Application is Running....");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
